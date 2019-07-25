@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from 'gatsby';
 import Layout from "../components/layout"
+import { Link, Button } from "gatsby-theme-material-ui";
 
 export const query = graphql`
 	query Homepage {
@@ -27,6 +28,8 @@ const IndexPage = (props) => {
           <p>{post.value}</p>
         </article>
       ))}
+      {/* <Link to="/page-2/">Go to page 2</Link> */}
+      <Button>Test</Button>
     </Layout>
   )
 }
