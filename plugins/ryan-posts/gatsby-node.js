@@ -1,18 +1,21 @@
 const axios = require('axios');
 const crypto = require('crypto');
 
-const API_URI = 'https://raw.githubusercontent.com/ryanfiller/portfolio-gatsby/master/syndicate.json';
+const API_URI = 'https://www.ryanfiller.com/syndicate.json';
 
 exports.sourceNodes = async ({actions}) => {
   const {createNode} = actions;
   const result = await axios.get(API_URI);
-  for (const post of result.data) {
+  result.data.items.map(async (post, index) => {
     await createNode({
-      children: [],
-      id: `${post.id}`,
-      title: post.title,
-      value: post.value,
       parent: null,
+      children: null,
+      id: index.toString(),
+      title: post.title,
+      date: post.date_modified,
+      excerpt: post.summary,
+      content: post.content_html,
+      url: post.url,
       internal: {
         type: 'RyanPost',
         contentDigest: crypto
@@ -20,6 +23,6 @@ exports.sourceNodes = async ({actions}) => {
           .update(JSON.stringify(post))
           .digest(`hex`),
       },
-    });
-  }
+    })
+  })
 };

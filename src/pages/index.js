@@ -1,15 +1,18 @@
 import React from "react"
 import { graphql } from 'gatsby';
+
+import Grid from '@material-ui/core/Grid';
+
 import Layout from "../components/layout"
-import { Link, Button } from "gatsby-theme-material-ui";
+import Preview from '../components/preview.js'
 
 export const query = graphql`
 	query Homepage {
 		posts: allRyanPost {
       nodes {
-        id
         title
-        value
+        date
+        excerpt
       }
     }
   }
@@ -22,14 +25,13 @@ const IndexPage = (props) => {
 
   return (
     <Layout>
-      {posts.map(post => (
-        <article key={post.id}>
-          <header>{post.title}</header>
-          <p>{post.value}</p>
-        </article>
-      ))}
-      {/* <Link to="/page-2/">Go to page 2</Link> */}
-      <Button>Test</Button>
+      <Grid container spacing={2}>
+        {posts.map((post, index) => (
+          <Grid item xs="6" key={index}>
+            <Preview {...post} /> 
+          </Grid>
+        ))}
+      </Grid>
     </Layout>
   )
 }
