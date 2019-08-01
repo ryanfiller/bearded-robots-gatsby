@@ -10,6 +10,7 @@
     "cheerio": "^1.0.0-rc.3",
     "gatsby": "^2.13.39",
     "gatsby-image": "^2.2.6",
+    "gatsby-plugin-layout": "^1.1.2",
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-source-filesystem": "^2.1.6",
@@ -19,7 +20,9 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-helmet": "^5.2.1"
+    "react-helmet": "^5.2.1",
+    "typeface-josefin-slab": "0.0.72",
+    "typeface-roboto": "0.0.75"
   },
   "devDependencies": {
     "prettier": "^1.18.2"

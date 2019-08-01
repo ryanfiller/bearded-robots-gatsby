@@ -1,23 +1,30 @@
 import React from 'react'
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import { Link, Button } from "gatsby-theme-material-ui";
+import { Link } from 'gatsby-theme-material-ui';
 
 const Preview = (props) => {
+
+  console.log(props)
+
   return (
-    <Card>
-      <CardActionArea>
-        <header>
-          {props.title}
-          <span>
-            {props.date}
-          </span>
-        </header>
-        <main>
-          {props.excpet}
-        </main>
-      </CardActionArea>
-    </Card>
+    <Link to={props.slug} >
+      <Card>
+        {/* <CardActionArea> */}
+          <header>
+            {props.title}
+            <br />
+            <span>
+              {props.date}
+            </span>
+          </header>
+          <br />
+          <main>
+            {props.excerpt}
+          </main>
+        {/* </CardActionArea> */}
+      </Card>
+    </Link>
   )
 }
 
