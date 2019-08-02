@@ -7,7 +7,7 @@ import Header from "./header"
 
 import "../styles/styles.css"
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -20,10 +20,13 @@ const Layout = ({ children }) => {
 
   return (
     <>
-    <Header siteTitle={data.site.siteMetadata.title} />
-    <Container component="main">
-        {children}
-    </Container>
+      <Header 
+        siteTitle={data.site.siteMetadata.title} 
+        location={props.location.pathname}
+        />
+      <Container component="main">
+        {props.children}
+      </Container>
     </>
   )
 }

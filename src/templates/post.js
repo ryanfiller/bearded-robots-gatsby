@@ -1,6 +1,7 @@
 import React from 'react'
 
-import Paper from '@material-ui/core/Paper';
+import Markdown from '../components/markdown'
+import Paper from '@material-ui/core/Paper'
 
 export const postQuery = graphql`
 	query post($slug: String!) {
@@ -17,7 +18,6 @@ export const postQuery = graphql`
       category
       tags
       body
-      rawBody 
 		}
 	}
 `
@@ -26,12 +26,13 @@ const Post = (props) => {
 
   const {
     body,
-    rawBody,
   } = props.data.ryanPost
 
   return (
       <Paper square component="article" >
-        <div dangerouslySetInnerHTML={{__html: rawBody}} />
+        <Markdown>
+          {body}
+        </Markdown>
       </Paper>
   )
 }

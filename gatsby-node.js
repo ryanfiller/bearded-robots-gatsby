@@ -17,8 +17,7 @@ exports.createPages = ({ graphql, actions }) => {
             excerpt
             category
             tags
-            body
-            rawBody   
+            body  
           }
         }
       }

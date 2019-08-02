@@ -7,7 +7,7 @@ import Preview from '../components/preview'
 
 // todo clean up unused stuff in query
 export const query = graphql`
-	query Homepage {
+	query Blog {
 		posts: allRyanPost {
       nodes {
         id
@@ -28,9 +28,11 @@ export const query = graphql`
 `
 
 
-const IndexPage = (props) => {
+const Blog = (props) => {
 
   const posts = props.data.posts.nodes;
+
+  console.log(props.location.pathname)
 
   return (
     <Grid container spacing={2}>
@@ -43,4 +45,4 @@ const IndexPage = (props) => {
   )
 }
 
-export default IndexPage
+export default Blog

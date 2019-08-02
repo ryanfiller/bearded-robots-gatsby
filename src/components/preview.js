@@ -5,8 +5,6 @@ import { Link } from 'gatsby-theme-material-ui';
 
 const Preview = (props) => {
 
-  console.log(props)
-
   return (
     <Link to={props.slug} >
       <Card>

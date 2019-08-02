@@ -38,7 +38,6 @@ exports.sourceNodes = async ({actions}) => {
         ...tags
       ],
       body: body,
-      rawBody: rawBody,
       
       parent: null,
       children: null,
