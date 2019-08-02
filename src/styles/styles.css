@@ -1,3 +1,5 @@
+/* --- setup --- */
+
 :root {
   --colorLightAsHex: 25, 25, 112;
   --colorLight: rgb(var(--colorLightAsHex));
@@ -7,7 +9,8 @@
   /* --colorGray: ; */
 }
 
-html {
+html, 
+body {
   font-size: 16px;
 }
 
@@ -17,15 +20,28 @@ html {
   }
 } */
 
+/* --- typography --- */
+
+:root {
+  --fontSerif: 'Josefin Slab', serif;
+  --fontSans: 'Roboto', sans-serif;
+}
+
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: var(--fontSerif);
   font-size: 1em;
   color: var(--colorDark);
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Josefin Slab', serif;
+  font-family: var(--fontSans);
   color: var(--colorLight);
+}
+
+/* --- header --- */
+
+#site-header a {
+  font-weight: bold;
 }
 
 #site-header .tab-spacer {
@@ -33,11 +49,20 @@ h1, h2, h3, h4, h5, h6 {
   max-width: none;
 }
 
+/* --- main --- */
+
+main {
+  padding: 2em 0 3em 0;
+  /* todo make sure footer stays at bottom */
+  /* min-height: 80vh; */
+}
 
 /* <Paper /> */
-/* .MuiPaper-root {
+main .MuiPaper-root {
   padding: 1em;
-} */
+}
+
+/* --- plaid --- */
 
 body {
   background-color: transparent !important;

@@ -2,6 +2,8 @@ import React from "react"
 import { graphql } from 'gatsby';
 
 import Grid from '@material-ui/core/Grid';
+import { Link } from 'gatsby'
+import Button from '@material-ui/core/Button';
 
 import Preview from '../components/preview'
 
@@ -33,13 +35,27 @@ const IndexPage = (props) => {
   const posts = props.data.posts.nodes;
 
   return (
-    <Grid container spacing={2}>
-      {posts.map((post, index) => (
-        <Grid item xs={6} key={index}>
-          <Preview {...post} /> 
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Link to="about">
+        <Button>
+          More About Me
+        </Button>
+      </Link>
+      <br />
+      <Grid container spacing={2}>
+        {posts.map((post, index) => (
+          <Grid item xs={6} key={index}>
+            <Preview {...post} /> 
+          </Grid>
+        ))}
+      </Grid>
+      <br />
+      <Link to="blog">
+        <Button>
+          Read More Blogs
+        </Button>
+      </Link>
+    </>
   )
 }
 
