@@ -1,10 +1,11 @@
 import React from "react"
 import { graphql } from 'gatsby';
 
-import Grid from '@material-ui/core/Grid';
 import { Link } from 'gatsby'
+import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 
+import Headshot from '../components/headshot'
 import Preview from '../components/preview'
 
 // todo clean up unused stuff in query
@@ -17,18 +18,19 @@ export const query = graphql`
         date
         slug
         external_url
-        image {
-          alt
+        thumbnail {
+          url
+        }
+        banner {
+          url
         }
         excerpt
         category
         tags
-        body
       }
     }
   }
 `
-
 
 const IndexPage = (props) => {
 
@@ -36,6 +38,7 @@ const IndexPage = (props) => {
 
   return (
     <>
+      <Headshot />
       <Link to="about">
         <Button>
           More About Me
@@ -51,10 +54,15 @@ const IndexPage = (props) => {
       </Grid>
       <br />
       <Link to="blog">
-        <Button>
+        <Button variant="contained">
           Read More Blogs
         </Button>
       </Link>
+      <a href="https://www.ryanfiller.com">
+        <Button variant="contained">
+          ryanfiller.com
+        </Button>
+      </a>
     </>
   )
 }

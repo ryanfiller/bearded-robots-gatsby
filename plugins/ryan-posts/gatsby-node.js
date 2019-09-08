@@ -12,10 +12,12 @@ exports.sourceNodes = async ({actions}) => {
       fields: { slug },
       frontmatter: {
         title,
-        date,
-        category,
-        tags,
-        excerpt,
+        meta: {
+          date,
+          category,
+          tags,
+          excerpt,
+        },
         thumbnail,
         banner
       },
@@ -29,8 +31,14 @@ exports.sourceNodes = async ({actions}) => {
       date: date,
       slug: slug,
       external_url: siteMetadata.siteUrl + slug,
-      image: thumbnail,
-      banner: banner,
+      thumbnail: {
+        url: thumbnail.url,
+        alt: thumbnail.alt,
+      },
+      banner: {
+        url: banner.url,
+        alt: banner.alt,
+      },
       excerpt: excerpt,
       category: category,
       tags: [
@@ -51,5 +59,3 @@ exports.sourceNodes = async ({actions}) => {
     })
   })
 };
-
-const testString = "asdfasdfasdf"

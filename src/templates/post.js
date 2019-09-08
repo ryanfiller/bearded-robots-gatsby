@@ -11,8 +11,11 @@ export const postQuery = graphql`
       date
       slug
       external_url
-      image {
-        alt
+      thumbnail {
+        url
+      }
+      banner {
+        url
       }
       excerpt
       category
@@ -27,7 +30,7 @@ const Post = (props) => {
   const {
     body,
   } = props.data.ryanPost
-
+  
   return (
       <Paper square component="article" >
         <Markdown>

@@ -3,6 +3,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Container from '@material-ui/core/Container';
+import Fade from '@material-ui/core/Fade';
 import Header from "./header"
 
 import "../styles/styles.css"
@@ -18,15 +19,19 @@ const Layout = (props) => {
     }
   `)
 
+  console.log(props)
+
   return (
     <>
       <Header 
         siteTitle={data.site.siteMetadata.title} 
         location={props.location.pathname}
-        />
-      <Container component="main">
-        {props.children}
-      </Container>
+      />
+      <Fade in={setTimeout(() => true, 3000)}>
+        <Container component="main">
+          {props.children}
+        </Container>
+      </Fade>
     </>
   )
 }

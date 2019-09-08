@@ -15,8 +15,11 @@ export const query = graphql`
         date
         slug
         external_url
-        image {
-          alt
+        thumbnail {
+          url
+        }
+        banner {
+          url
         }
         excerpt
         category
@@ -32,16 +35,16 @@ const Blog = (props) => {
 
   const posts = props.data.posts.nodes;
 
-  console.log(props.location.pathname)
-
   return (
-    <Grid container spacing={2}>
-      {posts.map((post, index) => (
-        <Grid item xs={6} key={index}>
-          <Preview {...post} /> 
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Grid container spacing={2}>
+        {posts.map((post, index) => (
+          <Grid item xs={6} key={index}>
+            <Preview {...post} /> 
+          </Grid>
+        ))}
+      </Grid>
+    </>
   )
 }
 

@@ -8,19 +8,14 @@ import Tab from '@material-ui/core/Tab';
 
 const Header = (props) => {
   
-  function handleChange(event) {
-    console.log(event.target)
-    // navigate()
-  }
-  
   return (
     <Paper square component="header" id="site-header">
       <Tabs
       component="nav"
-      value={props.location}
+      // this is reeeaaally hacky
+      value={props.location.length < 7 ? props.location : '/blog'}
       indicatorColor="primary"
       textColor="primary"
-      onChange={handleChange}
       >
         <Tab
           tabIndex={0}

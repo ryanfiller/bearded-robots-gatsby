@@ -11,8 +11,11 @@ exports.createPages = ({ graphql, actions }) => {
             date
             slug
             external_url
-            image {
-              alt
+            thumbnail {
+              url
+            }
+            banner {
+              url
             }
             excerpt
             category
