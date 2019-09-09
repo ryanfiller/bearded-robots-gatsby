@@ -88,15 +88,10 @@ main .MuiPaper-root {
 /* --- plaid --- */
 
 body {
-  background-color: transparent !important;
-}
-
-html {
   --forground: var(--colorLightAsHex);
   --background: var(--colorDarkAsHex);
   --opacity1: .5;
   --opacity2: .75;
-  background-position: fixed;
   background: 
     repeating-linear-gradient(
       45deg,
@@ -128,6 +123,7 @@ html {
       rgba(var(--background), var(--opacity2)) 5vw,
       rgba(var(--background), var(--opacity2)) 10vw
     );
+  background-attachment: fixed;
   margin: 0;
   padding: 0;
   height: 100vh;
