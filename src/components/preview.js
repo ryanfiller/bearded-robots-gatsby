@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Image from './image'
+import Meta from './meta'
 
 const Preview = (props) => {
 
@@ -14,6 +15,7 @@ const Preview = (props) => {
     slug,
     title,
     date,
+    tags,
     excerpt,
     thumbnail,
     banner,
@@ -28,16 +30,14 @@ const Preview = (props) => {
           <Image src={image.url} alt={image.alt} title={image.title} />
         </CardMedia>
       </Link>
-      {/* <CardMedia
-        style={{height: '250px'}}
-        image="http://placekitten.com/400/250"
-        title="Contemplative Reptile"
-      /> */}
       <CardContent>
         <Link to={slug}>
           <h2>{title}</h2>
         </Link>
-        <span>{date}</span>
+        <Meta
+          date={date}
+          tags={tags}
+        />
         <p>{excerpt}</p>
       </CardContent>
       <CardActions>
@@ -47,7 +47,7 @@ const Preview = (props) => {
         >
           <Button 
             variant="outlined"
-            >
+          >
             Read More
           </Button>
         </Link>

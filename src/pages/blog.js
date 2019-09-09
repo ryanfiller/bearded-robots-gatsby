@@ -39,7 +39,7 @@ const Blog = (props) => {
     <>
       <Grid container spacing={2}>
         {posts.map((post, index) => (
-          <Grid item xs={6} key={index}>
+          <Grid item xs={12} md={6} key={index}>
             <Preview {...post} /> 
           </Grid>
         ))}

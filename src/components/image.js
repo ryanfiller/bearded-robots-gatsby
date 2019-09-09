@@ -21,16 +21,6 @@ const Image = (props) => {
   // TODO regex might be better here
   const image = props.src.split(`${cloud}/image/upload`)[1]
 
-  const getStyle = (align) => {
-    const styles = {
-      width: '100%',
-    }
-
-    return styles;
-  }
-
-  console.log(props)
-
   return (
     <div className={`cl-image ${props.align}`}>
       <Img
@@ -41,10 +31,6 @@ const Image = (props) => {
         fluid={{
           maxWidth: 1000,
         }}
-        // style={{
-        //   width: '40vw',
-        //   height: '20vh',
-        // }}
         urlParams={'c_fill'}
       />
     </div>

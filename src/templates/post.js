@@ -2,24 +2,22 @@ import React from 'react'
 
 import Markdown from '../components/markdown'
 import Paper from '@material-ui/core/Paper'
+import Image from '../components/image'
+import Meta from '../components/meta'
 
 export const postQuery = graphql`
 	query post($slug: String!) {
 		ryanPost(slug: { eq: $slug } ) {
       id
+      slug
       title
       date
-      slug
+      tags
       external_url
-      thumbnail {
-        url
-      }
       banner {
         url
+        alt
       }
-      excerpt
-      category
-      tags
       body
 		}
 	}
@@ -28,15 +26,28 @@ export const postQuery = graphql`
 const Post = (props) => {
 
   const {
+    banner,
+    title,
+    date,
+    tags,
     body,
   } = props.data.ryanPost
   
   return (
-      <Paper square component="article" >
+      <Paper square component="article">
+        <header>
+          <Image src={banner.url} alt={banner.alt} />
+          <h1>{title}</h1>
+          <Meta
+            date={date}
+            tags={tags}
+          />
+        </header>
         <Markdown>
           {body}
         </Markdown>
       </Paper>
+      // TODO put back, more, link to oringinal here
   )
 }
 

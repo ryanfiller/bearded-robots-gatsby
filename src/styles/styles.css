@@ -49,6 +49,29 @@ h1, h2, h3, h4, h5, h6 {
   max-width: none;
 }
 
+/* --- meta --- */
+
+.meta time {
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+ul.tags {
+  list-style: none;
+  padding: 0;
+}
+
+ul.tags li {
+  display: inline-block;
+  margin-right: .5em;
+  margin-bottom: .5em;
+}
+
+ul.tags li span:before {
+  content: '#';
+}
+
+
 /* --- main --- */
 
 main {
@@ -111,10 +134,23 @@ html {
   width: 100vw;
 }
 
+/* --- mdx stuff --- */
+
+/* TODO get format library for this */
+pre {
+  width: 100%;
+  overflow: auto;
+}
+
 /* cloudinary-lazy images */
 
 .cl-image {
   width: 100%;
+}
+
+.cl-image img {
+  display: block;
+  line-height: 0;
 }
 
 .cl-image img:nth-child(2) {
@@ -145,8 +181,3 @@ html {
     width: 25%;
   }
 }
-
-/* img {
-  width: 100%;
-  height: auto;
-} */
