@@ -1,34 +1,53 @@
+
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
-import Img from "gatsby-image"
+  
+import Img from 'react-cloudinary-lazy-image'
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+const Image = (props) => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            cloudinaryCloud
           }
         }
       }
-    }
-  `)
+    `
+  )
 
-  // return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  const cloud = site.siteMetadata.cloudinaryCloud  
+  // TODO regex might be better here
+  const image = props.src.split(`${cloud}/image/upload`)[1]
+
+  const getStyle = (align) => {
+    const styles = {
+      width: '100%',
+    }
+
+    return styles;
+  }
+
+  console.log(props)
+
   return (
-    'this is an image'
+    <div className={`cl-image ${props.align}`}>
+      <Img
+        alt={props.alt}
+        title={props.title}
+        cloudName={cloud}
+        imageName={image}
+        fluid={{
+          maxWidth: 1000,
+        }}
+        // style={{
+        //   width: '40vw',
+        //   height: '20vh',
+        // }}
+        urlParams={'c_fill'}
+      />
+    </div>
   )
 }
 

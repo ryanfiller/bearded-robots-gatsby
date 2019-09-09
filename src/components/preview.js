@@ -6,6 +6,7 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
+import Image from './image'
 
 const Preview = (props) => {
 
@@ -20,13 +21,11 @@ const Preview = (props) => {
 
   const image = !!thumbnail.url ? thumbnail : banner;
 
-  console.log(image)
-
   return (
     <Card>
       <Link to={slug}>
         <CardMedia>
-          <img src={image.url} alt={image.alt} />
+          <Image src={image.url} alt={image.alt} title={image.title} />
         </CardMedia>
       </Link>
       {/* <CardMedia

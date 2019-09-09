@@ -111,7 +111,42 @@ html {
   width: 100vw;
 }
 
-img {
+/* cloudinary-lazy images */
+
+.cl-image {
+  width: 100%;
+}
+
+.cl-image img:nth-child(2) {
+  position: unset !important;
   width: 100%;
   height: auto;
 }
+
+@media (min-width: 768px) {
+  .cl-image.right {
+    width: 50%;
+    float: right;
+    margin-left: 1rem;
+  }
+
+  .cl-image.left {
+    width: 50%;
+    float: left;
+    margin-right: 1rem;
+  }
+
+  .cl-image.center {
+    width: 50%;
+    margin-right: 0 auto;
+  }
+
+  .cl-image.small {
+    width: 25%;
+  }
+}
+
+/* img {
+  width: 100%;
+  height: auto;
+} */

@@ -21,8 +21,7 @@ exports.sourceNodes = async ({actions}) => {
         thumbnail,
         banner
       },
-      body,
-      rawBody
+      body
     } = post; 
        
     await createNode({

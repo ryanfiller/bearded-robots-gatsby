@@ -1,8 +1,11 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
+    title: 'ryanfiller.com',
     author: `@gatsbyjs`,
+		description: 'syndicated posts from ryanfiller.com',
+    author: 'Ryan Filler',
+    // TODO pull this from syndicate.json from other site.
+		cloudinaryCloud: 'ryanfiller'
   },
   plugins: [
     'ryan-posts',

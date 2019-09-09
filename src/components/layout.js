@@ -19,8 +19,6 @@ const Layout = (props) => {
     }
   `)
 
-  console.log(props)
-
   return (
     <>
       <Header 
