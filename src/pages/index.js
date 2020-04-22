@@ -11,22 +11,27 @@ import Preview from '../components/preview'
 // todo clean up unused stuff in query
 export const query = graphql`
 	query Homepage {
-		posts: allRyanPost {
-      nodes {
-        id
-        title
-        date
-        slug
-        external_url
-        thumbnail {
-          url
+    meta: feedRyanBlogMeta {
+      creator
+      title
+      description
+      author
+      generator
+      link
+      lastBuildDate
+    }
+    posts: allFeedRyanBlog {
+      edges {
+        node {
+          title
+          pubDate
+          link
+          categories
+          excerpt 
+          content {
+            encoded
+          }
         }
-        banner {
-          url
-        }
-        excerpt
-        category
-        tags
       }
     }
   }
@@ -34,11 +39,11 @@ export const query = graphql`
 
 const IndexPage = (props) => {
 
-  const posts = props.data.posts.nodes;
+  const { edges: posts } = props.data.posts;
 
   return (
     <>
-      <Headshot />
+      {/* <Headshot /> */}
       <Link to="about">
         <Button>
           More About Me
@@ -48,7 +53,7 @@ const IndexPage = (props) => {
       <Grid container spacing={2}>
         {posts.map((post, index) => (
           <Grid item xs={6} key={index}>
-            <Preview {...post} /> 
+            <Preview {...post.node} /> 
           </Grid>
         ))}
       </Grid>

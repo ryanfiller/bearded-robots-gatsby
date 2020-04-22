@@ -4,7 +4,6 @@ import { format } from 'date-fns'
 import Chip from '@material-ui/core/Chip';
 
 const Meta = (props) => {
-
   const date = Date.parse(props.date)
 
   return (
@@ -12,10 +11,10 @@ const Meta = (props) => {
       <time datetime={date}>
         {format(date, 'MMMM, do uuuu')}
       </time>
-      <ul className="tags">
-        {props.tags.map((tag, index) => (
+      <ul className="categories">
+        {props.categories.map((category, index) => (
           <li key={index}>
-            <Chip label={tag} size="small" />
+            <Chip label={category} size="small" />
           </li>
         ))}
       </ul>

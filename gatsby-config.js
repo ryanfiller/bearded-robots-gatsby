@@ -8,7 +8,6 @@ module.exports = {
 		cloudinaryCloud: 'ryanfiller'
   },
   plugins: [
-    'ryan-posts',
     'gatsby-theme-material-ui',
     `gatsby-plugin-react-helmet`,
     {
@@ -24,6 +23,20 @@ module.exports = {
       resolve: `gatsby-plugin-layout`,
       options: {
           component: require.resolve(`./src/components/layout`)
+      }
+    },
+    {
+      resolve: `gatsby-source-rss-feed`,
+      options: {
+        name: `RyanBlog`,
+        // url: `https://www.ryanfiller.com/blog/code/rss.xml`,
+        url: `https://5e9fab9a6f297d000679494e--ryanfiller-gatsby.netlify.app/blog/code.rss.xml`,
+        parserOption: {
+          customFields: {
+            feed: ['otherTitle', 'extendedDescription'],
+            item: ['content:encoded','excerpt'],
+          }
+        }
       }
     }
   ],

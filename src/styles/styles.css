@@ -56,18 +56,18 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: bold;
 }
 
-ul.tags {
+ul.categories {
   list-style: none;
   padding: 0;
 }
 
-ul.tags li {
+ul.categories li {
   display: inline-block;
   margin-right: .5em;
   margin-bottom: .5em;
 }
 
-ul.tags li span:before {
+ul.categories li span:before {
   content: '#';
 }
 
@@ -88,38 +88,38 @@ main .MuiPaper-root {
 /* --- plaid --- */
 
 body {
-  --forground: var(--colorLightAsHex);
+  --foreground: var(--colorLightAsHex);
   --background: var(--colorDarkAsHex);
   --opacity1: .5;
   --opacity2: .75;
   background: 
     repeating-linear-gradient(
       45deg,
-      rgba(var(--forground), var(--opacity1)) 0vw,
-      rgba(var(--forground), var(--opacity1)) 1vw,
+      rgba(var(--foreground), var(--opacity1)) 0vw,
+      rgba(var(--foreground), var(--opacity1)) 1vw,
       rgba(var(--background), var(--opacity1)) 1vw,
       rgba(var(--background), var(--opacity1)) 2vw,
-      rgba(var(--forground), var(--opacity1)) 2vw,
-      rgba(var(--forground), var(--opacity1)) 3vw,
+      rgba(var(--foreground), var(--opacity1)) 2vw,
+      rgba(var(--foreground), var(--opacity1)) 3vw,
       rgba(var(--background), var(--opacity1)) 3vw,
       rgba(var(--background), var(--opacity1)) 4vw,
-      rgba(var(--forground), var(--opacity1)) 4vw,
-      rgba(var(--forground), var(--opacity1)) 5vw,
+      rgba(var(--foreground), var(--opacity1)) 4vw,
+      rgba(var(--foreground), var(--opacity1)) 5vw,
       rgba(var(--background), var(--opacity1)) 5vw,
       rgba(var(--background), var(--opacity1)) 10vw
     ),
     repeating-linear-gradient(
       -45deg,
-      rgba(var(--forground), var(--opacity2)) 0vw,
-      rgba(var(--forground), var(--opacity2)) 1vw,
+      rgba(var(--foreground), var(--opacity2)) 0vw,
+      rgba(var(--foreground), var(--opacity2)) 1vw,
       rgba(var(--background), var(--opacity2)) 1vw,
       rgba(var(--background), var(--opacity2)) 2vw,
-      rgba(var(--forground), var(--opacity2)) 2vw,
-      rgba(var(--forground), var(--opacity2)) 3vw,
+      rgba(var(--foreground), var(--opacity2)) 2vw,
+      rgba(var(--foreground), var(--opacity2)) 3vw,
       rgba(var(--background), var(--opacity2)) 3vw,
       rgba(var(--background), var(--opacity2)) 4vw,
-      rgba(var(--forground), var(--opacity2)) 4vw,
-      rgba(var(--forground), var(--opacity2)) 5vw,
+      rgba(var(--foreground), var(--opacity2)) 4vw,
+      rgba(var(--foreground), var(--opacity2)) 5vw,
       rgba(var(--background), var(--opacity2)) 5vw,
       rgba(var(--background), var(--opacity2)) 10vw
     );

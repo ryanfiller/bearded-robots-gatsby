@@ -11,24 +11,26 @@ import Meta from './meta'
 
 const Preview = (props) => {
 
+  console.log('props', props)
+
   const {
     slug,
     title,
-    date,
-    tags,
+    pubDate: date,
+    categories,
     excerpt,
     thumbnail,
     banner,
   } = props;
 
-  const image = !!thumbnail.url ? thumbnail : banner;
+  // const image = !!thumbnail.url ? thumbnail : banner;
 
   return (
     <Card>
       <Link to={slug}>
-        <CardMedia>
+        {/* <CardMedia>
           <Image src={image.url} alt={image.alt} title={image.title} />
-        </CardMedia>
+        </CardMedia> */}
       </Link>
       <CardContent>
         <Link to={slug}>
@@ -36,7 +38,7 @@ const Preview = (props) => {
         </Link>
         <Meta
           date={date}
-          tags={tags}
+          categories={categories}
         />
         <p>{excerpt}</p>
       </CardContent>
