@@ -6,6 +6,7 @@
   "author": "ryan filler <ryanfiller89@gmail.com>",
   "dependencies": {
     "@material-ui/core": "^4.2.1",
+    "@material-ui/icons": "^4.9.1",
     "@mdx-js/react": "^1.1.4",
     "date-fns": "^2.1.0",
     "gatsby": "^2.13.39",

@@ -30,11 +30,11 @@ module.exports = {
       options: {
         name: `RyanBlog`,
         // url: `https://www.ryanfiller.com/blog/code/rss.xml`,
-        url: `https://5e9fab9a6f297d000679494e--ryanfiller-gatsby.netlify.app/blog/code.rss.xml`,
+        url: `https://5ea088e30b15120007c7a326--ryanfiller-gatsby.netlify.app/blog/code.rss.xml`,
         parserOption: {
           customFields: {
-            feed: ['otherTitle', 'extendedDescription'],
-            item: ['content:encoded','excerpt'],
+            feed: ['siteTitle', 'siteUrl', 'headshot', 'about'],
+            item: ['content:encoded', 'excerpt'],
           }
         }
       }

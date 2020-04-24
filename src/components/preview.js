@@ -11,8 +11,6 @@ import Meta from './meta'
 
 const Preview = (props) => {
 
-  console.log('props', props)
-
   const {
     slug,
     title,
