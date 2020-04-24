@@ -8,7 +8,7 @@ const Meta = (props) => {
 
   return (
     <section className="meta">
-      <time datetime={date}>
+      <time dateTime={date}>
         {format(date, 'MMMM, do uuuu')}
       </time>
       <ul className="categories">
