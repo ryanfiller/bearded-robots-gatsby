@@ -3,7 +3,6 @@ import React from 'react'
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
 
-import Image from '../components/image'
 import Markdown from '../components/markdown'
 import Meta from '../components/meta'
 
@@ -14,6 +13,7 @@ export const postQuery = graphql`
       title
       pubDate
       categories
+      excerpt
       content {
         encoded
       }
@@ -50,10 +50,7 @@ const Post = (props) => {
           </a>
         </Button>
       </header>
-      {/* <Markdown>
-        {body}
-      </Markdown> */}
-      <main dangerouslySetInnerHTML={{__html: body}} />
+      <Markdown content={body} />
     </Paper>
   )
 }

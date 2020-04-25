@@ -55,7 +55,7 @@ const IndexPage = (props) => {
       <Paper square className="about">
         <Grid container spacing={2}>
           <Box className="site-into">
-            <h1>{description}</h1>
+            <h1>{description} (syndicated)</h1>
             {about}
           </Box>
           <Headshot headshot={headshot} author={author} />
