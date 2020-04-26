@@ -10,7 +10,6 @@ import SEO from "./seo"
 import "../styles/styles.css"
 
 const Layout = (props) => {
-  console.log(window.location)
   return (
     <>
       <Header 
@@ -18,7 +17,7 @@ const Layout = (props) => {
       />
       <SEO {...props.data} />
       <CssBaseline />
-      <Fade in={window.location.pathname.includes(props.location.pathname)} timeout={300}>
+      <Fade in={true} timeout={300}>
         <Container component="main">
           {props.children}
         </Container>
