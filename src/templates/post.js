@@ -1,4 +1,5 @@
 import React from 'react'
+import Helmet from "react-helmet"
 
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
@@ -37,24 +38,29 @@ const Post = (props) => {
   
   
   return (
-    <Container maxWidth="md">
-      <Paper square component="article">
-        <header>
-          {/* <Image src={banner.url} alt={banner.alt} /> */}
-          <h1>{title}</h1>
-          <Meta
-            date={date}
-            categories={categories}
-            />
-          <Button>
-            <a href={link}>
-              Read The Original Post
-            </a>
-          </Button>
-        </header>
-        <Markdown content={body} />
-      </Paper>
-    </Container>
+    <>
+      <Helmet>
+        <link rel="canonical" href={link} />
+      </Helmet>
+      <Container maxWidth="md">
+        <Paper square component="article">
+          <header>
+            {/* <Image src={banner.url} alt={banner.alt} /> */}
+            <h1>{title}</h1>
+            <Meta
+              date={date}
+              categories={categories}
+              />
+            <Button>
+              <a href={link}>
+                Read The Original Post
+              </a>
+            </Button>
+          </header>
+          <Markdown content={body} />
+        </Paper>
+      </Container>
+    </>
   )
 }
 
