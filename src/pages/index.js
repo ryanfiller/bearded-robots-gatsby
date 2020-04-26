@@ -2,67 +2,82 @@ import React from "react"
 import { graphql } from 'gatsby';
 
 import { Link } from 'gatsby'
-import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 
-import Headshot from '../components/headshot'
-import Preview from '../components/preview'
+import BlogList from '../components/blog-list'
 
 // todo clean up unused stuff in query
 export const query = graphql`
 	query Homepage {
-		posts: allRyanPost {
-      nodes {
-        id
-        title
-        date
-        slug
-        external_url
-        thumbnail {
-          url
+    meta: feedRyanBlogMeta {
+      siteUrl
+      description
+      about
+    }
+    posts: allFeedRyanBlog {
+      edges {
+        node {
+          title
+          pubDate
+          link
+          categories
+          excerpt 
+          content {
+            encoded
+          }
         }
-        banner {
-          url
-        }
-        excerpt
-        category
-        tags
       }
     }
   }
 `
 
 const IndexPage = (props) => {
-
-  const posts = props.data.posts.nodes;
+  const {
+    siteUrl,
+    description,
+    about,
+  } = props.data.meta
+  const { edges: posts } = props.data.posts;
 
   return (
     <>
-      <Headshot />
-      <Link to="about">
-        <Button>
-          More About Me
-        </Button>
-      </Link>
+      <Container maxWidth="md">
+        <Paper square className="about">
+          <Box >
+            <h1>{description} (syndicated)</h1>
+            <p>{about}</p>
+          </Box>
+          <ButtonGroup fullWidth>
+            <Button>
+              <Link to="about">
+                More About Me
+              </Link>
+            </Button>
+            <Button>
+              <Link to="blog">
+                More Posts
+              </Link>
+            </Button>
+            <Button>
+              <a href={siteUrl}>
+                My Full Site
+              </a>
+            </Button>
+          </ButtonGroup>
+        </Paper>
+      </Container>
       <br />
-      <Grid container spacing={2}>
-        {posts.map((post, index) => (
-          <Grid item xs={6} key={index}>
-            <Preview {...post} /> 
-          </Grid>
-        ))}
-      </Grid>
+      <BlogList posts={posts} limit={4} />
       <br />
-      <Link to="blog">
-        <Button variant="contained">
+      <Button fullWidth variant="contained">
+        <Link to="blog">
           Read More Blogs
-        </Button>
-      </Link>
-      <a href="https://www.ryanfiller.com">
-        <Button variant="contained">
-          ryanfiller.com
-        </Button>
-      </a>
+        </Link>
+      </Button>
     </>
   )
 }

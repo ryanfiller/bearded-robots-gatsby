@@ -1,26 +1,45 @@
 const path = require(`path`)
 
-exports.createPages = ({ graphql, actions }) => {
-	graphql(`
+exports.onCreateNode = ({ node, actions }) => {
+  const { createNodeField } = actions
+
+  if (node.internal.type === 'FeedRyanBlog') {
+    createNodeField({
+      node,
+      name: 'id',
+      value: node.id
+    })
+  
+    createNodeField({
+      node,
+      name: 'slug',
+      value: node.link.split('.com')[1]
+    })
+  }
+}
+
+exports.createPages = async ({ graphql, actions }) => {
+	await graphql(`
     {
-      allRyanPost {
+      meta: feedRyanBlogMeta {
+        siteUrl
+      }
+
+      posts: allFeedRyanBlog {
         edges {
           node {
-            id
             title
-            date
-            slug
-            external_url
-            thumbnail {
-              url
+            pubDate
+            link
+            categories
+            excerpt 
+            content {
+              encoded
             }
-            banner {
-              url
+            fields {
+              id
+              slug
             }
-            excerpt
-            category
-            tags
-            body  
           }
         }
       }
@@ -30,14 +49,13 @@ exports.createPages = ({ graphql, actions }) => {
 		if (errors) {
 			return Promise.reject(errors);
     }
-
-		data.allRyanPost.edges.forEach(({ node }) => {
+		data.posts.edges.forEach(({ node }) => {
 			actions.createPage({
-				path: node.slug,
+        path: node.fields.slug,
 				component: path.resolve(`./src/templates/post.js`),
 				context: {
-          id: node.id,
-          slug: node.slug,
+          id: node.fields.id,
+          slug: node.fields.slug,
 				},
 			})
 		})

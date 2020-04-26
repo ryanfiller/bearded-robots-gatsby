@@ -1,49 +1,55 @@
 import React from "react"
 import { graphql } from 'gatsby';
 
-import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
+import Paper from '@material-ui/core/Paper';
 
-import Preview from '../components/preview'
+import BlogPage from '../components/blog-list'
 
 // todo clean up unused stuff in query
 export const query = graphql`
 	query Blog {
-		posts: allRyanPost {
-      nodes {
-        id
-        title
-        date
-        slug
-        external_url
-        thumbnail {
-          url
+    meta: feedRyanBlogMeta {
+      siteUrl
+    }
+
+    posts: allFeedRyanBlog {
+      edges {
+        node {
+          title
+          pubDate
+          link
+          categories
+          excerpt 
+          content {
+            encoded
+          }
         }
-        banner {
-          url
-        }
-        excerpt
-        category
-        tags
-        body
       }
     }
   }
 `
 
-
 const Blog = (props) => {
-
-  const posts = props.data.posts.nodes;
+  const { siteUrl } = props.data.meta;
+  const { edges: posts } = props.data.posts;
 
   return (
     <>
-      <Grid container spacing={2}>
-        {posts.map((post, index) => (
-          <Grid item xs={12} md={6} key={index}>
-            <Preview {...post} /> 
-          </Grid>
-        ))}
-      </Grid>
+      <Container maxWidth="md">
+        <Paper square component="article">
+          <h1>Blog</h1>
+        </Paper>
+      </Container>
+      <br />
+      <BlogPage posts={posts} />
+      <br />
+      <Button fullWidth variant="contained">
+        <a href={`${siteUrl}/blog`}>
+          Read My Full Blog
+        </a>
+      </Button>
     </>
   )
 }

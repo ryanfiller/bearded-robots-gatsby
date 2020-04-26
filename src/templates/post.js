@@ -1,53 +1,60 @@
 import React from 'react'
 
-import Markdown from '../components/markdown'
+import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
-import Image from '../components/image'
+import Container from '@material-ui/core/Container';
+
+import Markdown from '../components/markdown'
 import Meta from '../components/meta'
 
 export const postQuery = graphql`
-	query post($slug: String!) {
-		ryanPost(slug: { eq: $slug } ) {
-      id
-      slug
+	query post($id: String!) {    
+    post: feedRyanBlog(id: { eq: $id } ) {
+      link
       title
-      date
-      tags
-      external_url
-      banner {
-        url
-        alt
+      pubDate
+      categories
+      excerpt
+      content {
+        encoded
       }
-      body
-		}
+    }
 	}
 `
 
 const Post = (props) => {
 
   const {
-    banner,
+    link,
+    // banner,
     title,
-    date,
-    tags,
-    body,
-  } = props.data.ryanPost
+    pubDate: date,
+    categories,
+    content: {
+      encoded: body
+    }
+  } = props.data.post
+  
   
   return (
+    <Container maxWidth="md">
       <Paper square component="article">
         <header>
-          <Image src={banner.url} alt={banner.alt} />
+          {/* <Image src={banner.url} alt={banner.alt} /> */}
           <h1>{title}</h1>
           <Meta
             date={date}
-            tags={tags}
-          />
+            categories={categories}
+            />
+          <Button>
+            <a href={link}>
+              Read The Original Post
+            </a>
+          </Button>
         </header>
-        <Markdown>
-          {body}
-        </Markdown>
+        <Markdown content={body} />
       </Paper>
-      // TODO put back, more, link to oringinal here
+    </Container>
   )
 }
 
