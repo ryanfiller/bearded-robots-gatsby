@@ -12,7 +12,7 @@ module.exports = {
       resolve: `gatsby-source-rss-feed`,
       options: {
         name: `RyanBlog`,
-        url: `https://5ea3bccff76cf10006153ec5--ryanfiller-gatsby.netlify.app/blog/code.rss.xml`,
+        url: `https://www.ryanfiller.com/blog/code.rss.xml`,
         parserOption: {
           customFields: {
             feed: ['siteTitle', 'siteUrl', 'headshot', 'about'],
