@@ -56,11 +56,8 @@ button a {
   max-width: none;
 }
 
-.site-into {
-  flex: 1;
-}
-
 .headshot {
+  float: right;
   height: 10rem;
   width: 10rem;
   margin: 1rem 0 1rem 1rem;
@@ -90,11 +87,8 @@ ul.categories li span:before {
 
 
 /* --- main --- */
-
 main {
   padding: 2em 0 3em 0;
-  /* todo make sure footer stays at bottom */
-  /* min-height: 80vh; */
 }
 
 /* <Paper /> */

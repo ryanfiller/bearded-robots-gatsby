@@ -2,6 +2,7 @@ import React from 'react'
 
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper'
+import Container from '@material-ui/core/Container';
 
 import Markdown from '../components/markdown'
 import Meta from '../components/meta'
@@ -33,25 +34,27 @@ const Post = (props) => {
       encoded: body
     }
   } = props.data.post
-
+  
   
   return (
-    <Paper square component="article">
-      <header>
-        {/* <Image src={banner.url} alt={banner.alt} /> */}
-        <h1>{title}</h1>
-        <Meta
-          date={date}
-          categories={categories}
-        />
-        <Button>
-          <a href={link}>
-            Read The Original Post
-          </a>
-        </Button>
-      </header>
-      <Markdown content={body} />
-    </Paper>
+    <Container maxWidth="md">
+      <Paper square component="article">
+        <header>
+          {/* <Image src={banner.url} alt={banner.alt} /> */}
+          <h1>{title}</h1>
+          <Meta
+            date={date}
+            categories={categories}
+            />
+          <Button>
+            <a href={link}>
+              Read The Original Post
+            </a>
+          </Button>
+        </header>
+        <Markdown content={body} />
+      </Paper>
+    </Container>
   )
 }
 
